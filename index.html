@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'ARRIVAGE — Poissons & Fruits de Mer</title>
+
+<style>
+:root{
+  --bg:#f7f2ea;
+  --navy:#1a1a2e;
+  --gold:#c89b3c;
+  --wood:#5a4634;
+  --light:#fffdf9;
+  --soft:#ece5d8;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:var(--bg);
+  color:var(--navy);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.7;
+}
+
+img{
+  width:100%;
+  display:block;
+}
+
+.container{
+  width:min(1180px,92%);
+  margin:auto;
+}
+
+h1,h2,h3{
+  font-family:Georgia,serif;
+  font-weight:400;
+}
+
+/* NAV */
+
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1000;
+  background:rgba(247,242,234,.96);
+  border-bottom:1px solid rgba(0,0,0,.06);
+  backdrop-filter:blur(10px);
+}
+
+.nav-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 0;
+}
+
+.logo{
+  font-family:Georgia,serif;
+  font-size:1.5rem;
+  letter-spacing:2px;
+}
+
+.nav-links{
+  display:flex;
+  gap:30px;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:var(--navy);
+  font-size:.95rem;
+}
+
+.nav-links a:hover{
+  color:var(--gold);
+}
+
+/* HERO */
+
+.hero{
+  min-height:100vh;
+  position:relative;
+  display:flex;
+  align-items:center;
+  background:
+  linear-gradient(rgba(12,14,26,.55),rgba(12,14,26,.55)),
+  url('https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1600&q=80') center/cover no-repeat;
+  color:white;
+}
+
+.hero-content{
+  max-width:760px;
+  padding-top:90px;
+}
+
+.hero-tag{
+  text-transform:uppercase;
+  letter-spacing:3px;
+  color:#e7c776;
+  margin-bottom:20px;
+  font-size:.95rem;
+}
+
+.hero h1{
+  font-size:5.4rem;
+  line-height:1;
+  margin-bottom:28px;
+}
+
+.hero p{
+  font-size:1.15rem;
+  max-width:650px;
+  color:rgba(255,255,255,.9);
+  margin-bottom:34px;
+}
+
+.rating{
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.15);
+  padding:14px 18px;
+  border-radius:50px;
+  backdrop-filter:blur(6px);
+}
+
+.rating strong{
+  color:#ffd87a;
+}
+
+/* SECTIONS */
+
+section{
+  padding:110px 0;
+}
+
+.section-title{
+  font-size:3rem;
+  margin-bottom:24px;
+}
+
+.section-text{
+  max-width:760px;
+  color:#4d4d5c;
+}
+
+/* STORY */
+
+.story-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+
+.story-image{
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 20px 50px rgba(0,0,0,.12);
+}
+
+.story-content p{
+  margin-bottom:22px;
+}
+
+/* MENU */
+
+.menu-section{
+  background:var(--soft);
+}
+
+.menu-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:32px;
+  margin-top:50px;
+}
+
+.menu-card{
+  background:var(--light);
+  border-radius:18px;
+  padding:36px;
+  box-shadow:0 8px 30px rgba(0,0,0,.05);
+}
+
+.menu-card h3{
+  font-size:1.7rem;
+  color:var(--gold);
+  margin-bottom:28px;
+}
+
+.menu-item{
+  padding:18px 0;
+  border-bottom:1px solid rgba(0,0,0,.08);
+}
+
+.menu-item:last-child{
+  border-bottom:none;
+}
+
+.menu-top{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  margin-bottom:8px;
+}
+
+.menu-name{
+  font-weight:600;
+}
+
+.price{
+  color:var(--gold);
+  font-weight:700;
+}
+
+.menu-desc{
+  color:#666;
+  font-size:.95rem;
+}
+
+/* GALLERY */
+
+.gallery{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+  margin-top:50px;
+}
+
+.gallery img{
+  border-radius:16px;
+  height:420px;
+  object-fit:cover;
+}
+
+/* REVIEWS */
+
+.reviews-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:28px;
+  margin-top:50px;
+}
+
+.review{
+  background:white;
+  padding:34px;
+  border-radius:18px;
+  box-shadow:0 8px 30px rgba(0,0,0,.05);
+}
+
+.stars{
+  color:var(--gold);
+  margin-bottom:16px;
+}
+
+.review p{
+  color:#555;
+  margin-bottom:18px;
+}
+
+/* INFOS */
+
+.info-box{
+  background:var(--navy);
+  color:white;
+  border-radius:24px;
+  padding:60px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:40px;
+}
+
+.info-box h3{
+  color:#e2bb68;
+  margin-bottom:14px;
+}
+
+.info-box a{
+  color:#f3d78d;
+  text-decoration:none;
+}
+
+/* RESA */
+
+.resa-bar{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  background:rgba(20,20,35,.97);
+  border-top:1px solid rgba(255,255,255,.08);
+  z-index:1000;
+}
+
+.resa-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 0;
+  color:white;
+}
+
+.resa-btn{
+  background:var(--gold);
+  color:var(--navy);
+  text-decoration:none;
+  padding:13px 22px;
+  border-radius:50px;
+  font-weight:700;
+}
+
+footer{
+  text-align:center;
+  padding:50px 20px 120px;
+  color:#6b6b75;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+  .hero h1{
+    font-size:3.8rem;
+  }
+
+  .story-grid,
+  .gallery{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media(max-width:640px){
+
+  .nav-inner{
+    flex-direction:column;
+    gap:14px;
+  }
+
+  .nav-links{
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:16px;
+  }
+
+  .hero{
+    text-align:center;
+  }
+
+  .hero h1{
+    font-size:2.8rem;
+  }
+
+  .section-title{
+    font-size:2.2rem;
+  }
+
+  .gallery img{
+    height:280px;
+  }
+
+  .resa-inner{
+    flex-direction:column;
+    gap:14px;
+    text-align:center;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="container nav-inner">
+
+    <div class="logo">L'ARRIVAGE</div>
+
+    <div class="nav-links">
+      <a href="#about">A propos</a>
+      <a href="#menu">La carte</a>
+      <a href="#reviews">Avis</a>
+      <a href="#infos">Infos</a>
+    </div>
+
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container hero-content">
+
+    <div class="hero-tag">
+      Poissons frais & fruits de mer
+    </div>
+
+    <h1>L'ARRIVAGE</h1>
+
+    <p>
+      Restaurant emblématique du Cap d'Agde situé Place Terrisse,
+      L'Arrivage propose une cuisine méditerranéenne tournée vers les produits frais
+      de la criée d'Agde : poissons entiers grillés, crustacés, huîtres,
+      parilladas et spécialités de la mer.
+    </p>
+
+    <div class="rating">
+      <strong>★★★★★ 4.7</strong>
+      <span>1473 avis Google</span>
+    </div>
+
+  </div>
+</header>
+
+<section id="about">
+  <div class="container story-grid">
+
+    <div class="story-content">
+
+      <h2 class="section-title">L'esprit du port</h2>
+
+      <p>
+        Inspiré par l'univers marin du Cap d'Agde, L'Arrivage possède une identité forte,
+        reconnaissable immédiatement avec sa façade bateau devenue emblématique sur Place Terrisse.
+      </p>
+
+      <p>
+        Chaque matin, les produits de la mer arrivent directement de la criée d'Agde.
+        La cuisine met à l'honneur les poissons méditerranéens, les crustacés
+        et les recettes traditionnelles du littoral.
+      </p>
+
+      <p>
+        Terrasse boisée, ambiance portuaire élégante, salle climatisée et service chaleureux :
+        le restaurant attire aussi bien les habitués du Cap que les visiteurs de passage.
+      </p>
+
+    </div>
+
+    <div class="story-image">
+      <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=800&q=80" alt="Restaurant L'Arrivage">
+    </div>
+
+  </div>
+</section>
+
+<section id="menu" class="menu-section">
+  <div class="container">
+
+    <h2 class="section-title">La carte</h2>
+
+    <p class="section-text">
+      Une cuisine marine généreuse inspirée des arrivages du jour et des saveurs méditerranéennes.
+    </p>
+
+    <div class="menu-grid">
+
+      <div class="menu-card">
+
+        <h3>Entrées</h3>
+
+        <div class="menu-item">
+          <div class="menu-top">
+            <div class="menu-name">Huîtres de Bouzigues x6</div>
+            <div class="price">13,50€</div>
+          </div>
+          <div class="menu-desc">
+            Servies fraîches avec citron et vinaigre à l'échalote.
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-top">
+            <div class="menu-name">Soupe de poisson maison</div>
+            <div class="price">13,50€</div>
+          </div>
+          <div class="menu-desc">
+            Rouille, croûtons dorés et fromage râpé.
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-top">
+            <div class="menu-name">Petit tartare de thon</div>
+            <div class="price">16,90€</div>
+          </div>
+          <div class="menu-desc">
+            Thon frais, agrumes et coriandre fraîche.
+          </div>
+        </div>
+
+      </div>
+
+      <div class="menu-card">
+
+        <h3>Plats</h3>
+
+        <div class="menu-item">
+          <div class="menu-top">
+            <div class="menu-name">Parillada de la mer</div>
+            <div class="price">36€</div>
+          </div>
+          <div class="menu-desc">
+            Assortiment de poissons et crustacés grillés selon arrivage.
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-top">
+            <div class="menu-name">Langouste grillée</div>
+            <div class="price">70€</div>
+          </div>
+          <div class="menu-desc">
+            Langouste grillée et légumes méditerranéens.
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-top">
+            <div class="menu-name">Poisson entier à l'ardoise</div>
+            <div class="price">Selon arrivage</div>
+          </div>
+          <div class="menu-desc">
+            Loup, daurade, sole ou turbot selon la pêche du jour.
+          </div>
+        </div>
+
+      </div>
+
+      <div class="menu-card">
+
+        <h3>Spécialités</h3>
+
+        <div class="menu-item">
+          <div class="menu-top">
+            <div class="menu-name">Bouillabaisse provençale</div>
+            <div class="price">Sur commande</div>
+          </div>
+          <div class="menu-desc">
+            À réserver 48h à l'avance.
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-top">
+            <div class="menu-name">Tourteau entier</div>
+            <div class="price">32€</div>
+          </div>
+          <div class="menu-desc">
+            Servi froid avec mayonnaise maison.
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-top">
+            <div class="menu-name">Profiteroles maison</div>
+            <div class="price">10€</div>
+          </div>
+          <div class="menu-desc">
+            Chocolat chaud intense et glace vanille.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80" alt="Terrasse restaurant">
+      <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=800&q=80" alt="Façade restaurant">
+    </div>
+
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="container">
+
+    <h2 class="section-title">Avis clients</h2>
+
+    <div class="reviews-grid">
+
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>
+          "Très belle adresse au Cap d'Agde. Produits ultra frais,
+          service efficace et excellente parillada."
+        </p>
+        <strong>— Camille R.</strong>
+      </div>
+
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>
+          "L'ambiance du restaurant est unique avec sa façade bateau.
+          Les poissons sont parfaitement cuits."
+        </p>
+        <strong>— Julien M.</strong>
+      </div>
+
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>
+          "Très bon accueil, terrasse agréable et cuisine généreuse.
+          Une des meilleures tables poissons du Cap."
+        </p>
+        <strong>— Sophie L.</strong>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section id="infos">
+  <div class="container">
+
+    <div class="info-box">
+
+      <div>
+        <h3>Adresse</h3>
+        <p>
+          4 Place Terrisse<br>
+          34300 Agde — Cap d'Agde
+        </p>
+      </div>
+
+      <div>
+        <h3>Telephone</h3>
+        <p>
+          <a href="tel:+33467313534">04 67 31 35 34</a>
+        </p>
+      </div>
+
+      <div>
+        <h3>Horaires</h3>
+        <p>
+          Midi : 12h00 — 14h00<br>
+          Soir : 19h00 — 22h30
+        </p>
+      </div>
+
+      <div>
+        <h3>Le restaurant</h3>
+        <p>
+          Terrasse ombragée<br>
+          Salle climatisée<br>
+          Produits frais de la criée
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  L'ARRIVAGE — Restaurant de poissons & fruits de mer au Cap d'Agde
+</footer>
+
+<div class="resa-bar">
+  <div class="container resa-inner">
+
+    <div>
+      Réservation conseillée — Service midi & soir
+    </div>
+
+    <a href="tel:+33467313534" class="resa-btn">
+      Réserver • 04 67 31 35 34
+    </a>
+
+  </div>
+</div>
+
+</body>
+</html>
